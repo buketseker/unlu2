@@ -12,7 +12,7 @@ class SaleOrder(models.Model):
     currency_rate_type_id = fields.Many2one('res.currency.rate.type', string='Para Birimi Kur Tipi')
     use_custom_rate = fields.Boolean(string="Özel Kur")
     custom_rate = fields.Float(string='Custom Rate(Özel Kur Değeri)', digits=(12, 6))
-    currency_rate = fields.Float(string="Para Birimi Kuru", digits=(12, 6), default=1.0,
+    currency_rate = fields.Float(string="Para Birimi Kuru", digits=(12, 6),
                                  compute='update_currency_rate',
                                  inverse='_set_custom_rate',
                                  store=True,

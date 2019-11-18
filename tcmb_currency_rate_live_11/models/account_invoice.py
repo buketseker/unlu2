@@ -134,7 +134,8 @@ class AccountInvoice(models.Model):
                 currency_rate_ids = currency_rate_obj.search([('currency_id', '=', currency.id)])
                 if currency_rate_ids:
                     if record.date_invoice:
-                        date_found = record.date_invoice- timedelta(days=1)
+                        date_found = datetime.strptime(record.date_invoice, "%Y-%m-%d") - timedelta(days=1)
+                        #date_found = record.date_invoice- timedelta(days=1)
                         date_to_search = date_found.strftime("%Y-%m-%d")
                     else:
                         date_found = datetime.strptime(datetime.today().strftime("%Y-%m-%d"),
